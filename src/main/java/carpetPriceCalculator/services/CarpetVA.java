@@ -8,19 +8,20 @@ import org.springframework.stereotype.Component;
 import java.util.HashMap;
 import java.util.Map;
 
-@Component
+
 public class CarpetVA implements Carpet {
 
    public static Map<City,Double> unitPriceVA = new HashMap<>();
    public String state;
-   @Value("${city}")
-   public String cityName;
-   public City city;
 
-   public CarpetVA(City city){
-       this.state = "VA";
-       this.city = city;
+   static{
+       unitPriceVA.put(City.ARLINGTON, 7.75);
+       unitPriceVA.put(City.FAIRFAX, 8.99);
+       unitPriceVA.put(City.MCLEAN, 9.75);
    }
+    public CarpetVA(){
+        this.state = "VA";
+    }
 
     public String toString(){
         return "Carpet VA";
@@ -32,18 +33,7 @@ public class CarpetVA implements Carpet {
     }
 
     @Override
-    public City getCity() {
-        return city;
-    }
-
-    @Override
     public double getUnitPrice(City city) {
-        unitPriceVA.put(City.ARLINGTON, 7.75);
-        unitPriceVA.put(City.FAIRFAX, 8.99);
-        unitPriceVA.put(City.MCLEAN, 9.75);
-        if(unitPriceVA.get(city) == null){
-            return 0.00;
-        }else
-            return unitPriceVA.get(city);
+        return (unitPriceVA.get(city) == null) ? 0.00 : unitPriceVA.get(city);
     }
 }

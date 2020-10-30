@@ -3,7 +3,7 @@ package carpetPriceCalculator.floor;
 import carpetPriceCalculator.interfaces.floorTypes.Floor;
 import org.springframework.stereotype.Component;
 
-@Component
+
 public class LivingRoom implements Floor {
     private double width;
     private double length;

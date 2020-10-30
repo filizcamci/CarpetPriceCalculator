@@ -9,27 +9,20 @@ import org.springframework.stereotype.Component;
 @Component
 public class Calculator {
 
-    private Carpet carpet;
-    private Floor floor;
+    public Object calculateCarpetPrice(Carpet carpet, City city, Floor floor) {
 
-    @Autowired
-    public Calculator(Carpet c, Floor f) {
-        this.carpet = c;
-        this.floor = f;
-    }
 
-    public Object calculateCarpetPrice() {
-
-        if (this.carpet.getUnitPrice(carpet.getCity()) != 0.0) {
-            System.out.println("State : " + this.carpet.getState());
-            System.out.println("City : " + this.carpet.getCity());
-            System.out.println("Unit price : $ " + this.carpet.getUnitPrice(carpet.getCity()));
-            System.out.println("Room : " + this.floor.toString());
-            System.out.println("Area : " + this.floor.getArea());
-            return "Total price : $ " + this.carpet.getUnitPrice(carpet.getCity()) * this.floor.getArea();
-//
+        if (carpet.getUnitPrice(city) != 0.0) {
+            System.out.println("State : " + carpet.getState());
+            System.out.println("City : " + city);
+            System.out.println("Unit price : $ " + carpet.getUnitPrice(city));
+            System.out.println("Room : " + floor.toString());
+            System.out.println("Area : " + floor.getArea());
+            return "Total price : $ " + carpet.getUnitPrice(city) * floor.getArea();
         } else {
-            return "Invalid city name!...";
+            System.out.println("State : " + carpet.getState());
+            System.out.println("City : " + city);
+            return city + " is not in " + carpet.getState() + ". Please enter one of " + carpet.getState() + " cities";
         }
 
     }

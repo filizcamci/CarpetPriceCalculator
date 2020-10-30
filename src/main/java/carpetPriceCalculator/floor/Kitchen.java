@@ -3,11 +3,11 @@ package carpetPriceCalculator.floor;
 import carpetPriceCalculator.interfaces.floorTypes.Floor;
 import org.springframework.stereotype.Component;
 
-@Component
+
 public class Kitchen implements Floor {
     private double radius;
     public double getArea() {
-        return 3.14 * radius * radius;
+        return Math.PI * radius * radius;
     }
     public String toString(){
         return "Kitchen";
